@@ -9,14 +9,14 @@ import jakarta.persistence.Id;
 public class RegraEmprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigoRegraEmprestimo;
+    private long codigoRegraEmprestimo;
     private int prazoDias;
     private double multaPorDia;
     private double multaMax;
     private int limiteEmprestimos;
     private boolean ativa;
     
-    public RegraEmprestimo(int codigoRegraEmprestimo, int prazoDias, double multaPorDia, double multaMax, int limiteEmprestimos, boolean ativa) {
+    public RegraEmprestimo(long codigoRegraEmprestimo, int prazoDias, double multaPorDia, double multaMax, int limiteEmprestimos, boolean ativa) {
         this.codigoRegraEmprestimo = codigoRegraEmprestimo;
         this.prazoDias = prazoDias;
         this.multaPorDia = multaPorDia;
@@ -25,7 +25,7 @@ public class RegraEmprestimo {
         this.ativa = ativa; 
     }
 
-    public int getCodigoRegraEmprestimo() {
+    public long getCodigoRegraEmprestimo() {
         return codigoRegraEmprestimo;
     }
 

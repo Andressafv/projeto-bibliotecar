@@ -11,19 +11,19 @@ import jakarta.persistence.Id;
 public class Bloqueio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigoBloqueio;
+    private long codigoBloqueio;
     private String motivo;
     private Date dataInicio;
     private Date dataFim;
     
-    public Bloqueio(int codigoBloqueio, String motivo, Date dataInicio, Date dataFim) {
+    public Bloqueio(long codigoBloqueio, String motivo, Date dataInicio, Date dataFim) {
         this.codigoBloqueio = codigoBloqueio;
         this.motivo = motivo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
     }
 
-    public int getCodigoBloqueio() {
+    public long getCodigoBloqueio() {
         return codigoBloqueio;
     }
 

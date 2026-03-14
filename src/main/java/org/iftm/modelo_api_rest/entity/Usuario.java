@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name="tb_Usuario")
@@ -24,11 +25,19 @@ public class Usuario {
     @Column (name="tipo_usuario")
     private String tipoUsuario;
 
+    @OneToMany
+    @JoinColumn(name = "fk_bloqueio", referencedColumnName = "id")
+    private Bloqueio bloqueio;
+
+    @OneToMany
+    @JoinColumn(name = "fk_regra_emprestimo", referencedColumnName = "id")
+    private RegraEmprestimo ;
+
     public Usuario() {
     }
 
     public Usuario(Long codigoUsuario, String nome, String cpf, String matricula, 
-                   String email, String senha, String tipoUsuario) {
+                   String email, String senha, String tipoUsuario, Bloqueio bloqueio) {
         this.codigoUsuario = codigoUsuario;
         this.nome = nome;
         this.cpf = cpf;
@@ -36,6 +45,7 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
+        this.bloqueio = bloqueio;
     }
 
     public Long getCodigoUsuario() {
@@ -92,5 +102,13 @@ public class Usuario {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public Bloqueio getBloqueio() {
+        return bloqueio;
+    }
+
+    public void setBloqueio(Bloqueio bloqueio) {
+        this.bloqueio = bloqueio;
     }
 }

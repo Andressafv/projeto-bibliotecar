@@ -24,6 +24,9 @@ public class RegraEmprestimo {
     @Column(name="limite_emprestimos")
     private int limiteEmprestimos;
     private boolean ativa;
+
+    @ManyToOne(mappedBy = "regra_emprestimo", fetch = FetchType.LAZY)
+    private List<Usuario> usuarios = new ArrayList<>();
     
     public RegraEmprestimo(long codigoRegraEmprestimo, int prazoDias, double multaPorDia, double multaMax, int limiteEmprestimos, boolean ativa) {
         this.codigoRegraEmprestimo = codigoRegraEmprestimo;

@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name="tb_bloqueio")
@@ -22,6 +23,9 @@ public class Bloqueio {
     private Date dataInicio;
     @Column(name="data_fim")
     private Date dataFim;
+
+    @ManyToOne(mappedBy = "bloqueio", fetch = FetchType.LAZY)
+    private List<Usuario> usuarios = new ArrayList<>();
     
     public Bloqueio(long codigoBloqueio, String motivo, Date dataInicio, Date dataFim) {
         this.codigoBloqueio = codigoBloqueio;
@@ -62,5 +66,11 @@ public class Bloqueio {
         this.dataFim = dataFim;
     }
   
-    
+    public getUsuario() {
+        return usuario;
+    }
+
+    public setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

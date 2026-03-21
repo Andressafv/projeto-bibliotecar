@@ -66,11 +66,11 @@ public class Bloqueio {
         this.dataFim = dataFim;
     }
   
-    public getUsuario() {
-        return usuario;
+    public List<Usuario> getUsuario() {
+        return usuarios;
     }
 
-    public setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public setUsuario(List<Usuario> usuario) {
+        this.usuarios = usuario;
     }
 }

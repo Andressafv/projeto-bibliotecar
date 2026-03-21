@@ -31,13 +31,13 @@ public class Usuario {
 
     @OneToMany
     @JoinColumn(name = "fk_regra_emprestimo", referencedColumnName = "id")
-    private RegraEmprestimo ;
+    private RegraEmprestimo regraEmprestimo;
 
     public Usuario() {
     }
 
     public Usuario(Long codigoUsuario, String nome, String cpf, String matricula, 
-                   String email, String senha, String tipoUsuario, Bloqueio bloqueio) {
+                   String email, String senha, String tipoUsuario, Bloqueio bloqueio, RegraEmprestimo RegraEmprestimo) {
         this.codigoUsuario = codigoUsuario;
         this.nome = nome;
         this.cpf = cpf;
@@ -46,6 +46,14 @@ public class Usuario {
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.bloqueio = bloqueio;
+        this.RegraEmprestimo = regraEmprestimo;
+    }
+
+    public Usuario(Long codigoUsuario, String nome, String cpf, String matricula) {
+    this.codigoUsuario = codigoUsuario;
+    this.nome = nome;
+    this.cpf = cpf;
+    this.matricula = matricula;
     }
 
     public Long getCodigoUsuario() {
@@ -111,4 +119,5 @@ public class Usuario {
     public void setBloqueio(Bloqueio bloqueio) {
         this.bloqueio = bloqueio;
     }
+
 }

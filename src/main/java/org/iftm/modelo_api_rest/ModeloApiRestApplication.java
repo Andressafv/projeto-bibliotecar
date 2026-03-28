@@ -1,6 +1,7 @@
 package org.iftm.modelo_api_rest;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.iftm.modelo_api_rest.entities.Bloqueio;
@@ -28,21 +29,12 @@ public class ModeloApiRestApplication implements CommandLineRunner {
 @Override
 
 public void run(String... args) throws Exception {
-		Bloqueio bloquei1 = new Bloqueio(null, "Multa", "25/03/2026", "27/03/2026");
-		bloqueioRepository.save(bloquei1);
-		RegraEmprestimo regraEmprestimo1 = new RegraEmprestimo(null, "7", "1", "10", "3", "true");
-		regraEmprestimo1.setBloqueio(bloquei1);
-		regraEmprestimo.save(regraEmprestimo1);
-
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		List<Bloqueio> list = bloqueioRepository.findAll();
-		for (Bloqueio blo : list) {
-			System.out.println(blo.getMotivo() + " maxima " + blo.getCodigoRegraEmprestimo().getMultaMax());
-		}
-		System.out.println();
-		System.out.println();
-		System.out.println();
-
+	  
+		Bloqueio bloqueio1 = new Bloqueio(null, "Multa", Date.from(Instant.now()), Date.from(Instant.now()));
+        bloqueioRepository.save(bloqueio1);
+        
+	//	RegraEmprestimo regraEmprestimo1 = new RegraEmprestimo(null, 7, 2.0, 20.0, 5, true);
+	
+	// regraEmprestimoRepository.save(regraEmprestimo1);
+	}
 }

@@ -1,4 +1,4 @@
-package org.iftm.modelo_api_rest.entity;
+package org.iftm.modelo_api_rest.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name="tb_Usuario")
@@ -25,11 +26,11 @@ public class Usuario {
     @Column (name="tipo_usuario")
     private String tipoUsuario;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "fk_bloqueio", referencedColumnName = "id")
     private Bloqueio bloqueio;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "fk_regra_emprestimo", referencedColumnName = "id")
     private RegraEmprestimo regraEmprestimo;
 
@@ -37,7 +38,7 @@ public class Usuario {
     }
 
     public Usuario(Long codigoUsuario, String nome, String cpf, String matricula, 
-                   String email, String senha, String tipoUsuario, Bloqueio bloqueio, RegraEmprestimo RegraEmprestimo) {
+                   String email, String senha, String tipoUsuario, Bloqueio bloqueio, RegraEmprestimo RegraEmprestimo, RegraEmprestimo regraEmprestimo) {
         this.codigoUsuario = codigoUsuario;
         this.nome = nome;
         this.cpf = cpf;
@@ -46,7 +47,7 @@ public class Usuario {
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.bloqueio = bloqueio;
-        this.RegraEmprestimo = regraEmprestimo;
+        this.regraEmprestimo = regraEmprestimo;
     }
 
     public Usuario(Long codigoUsuario, String nome, String cpf, String matricula) {

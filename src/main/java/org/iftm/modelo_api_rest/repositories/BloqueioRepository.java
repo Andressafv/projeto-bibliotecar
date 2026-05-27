@@ -1,7 +1,15 @@
 package org.iftm.modelo_api_rest.repositories;
 
+import java.time.LocalDate;
+import java.util.List;
 import org.iftm.modelo_api_rest.entities.Bloqueio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BloqueioRepository extends JpaRepository<Bloqueio, Long>{ 
+public interface BloqueioRepository extends JpaRepository<Bloqueio, Long> {
+    
+    List<Bloqueio> findByMotivoContaining(String motivo);
+    
+    List<Bloqueio> findByDataFimIsNull();
+    
+    List<Bloqueio> findByDataInicio(LocalDate dataInicio);
 }

@@ -13,6 +13,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tb_bloqueio")
 
@@ -27,9 +29,13 @@ public class Bloqueio {
     @Column(name="data_fim")
     private Date dataFim;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "bloqueio", fetch = FetchType.LAZY)
     private List<Usuario> usuarios = new ArrayList<>();
-    
+
+    public Bloqueio() {
+    }
+
     public Bloqueio(Long codigoBloqueio, String motivo, Date dataInicio, Date dataFim) {
         this.codigoBloqueio = codigoBloqueio;
         this.motivo = motivo;
@@ -53,7 +59,7 @@ public class Bloqueio {
         return dataFim;
     }
 
-    public void setCodigoBloqueio(int codigoBloqueio) {
+    public void setCodigoBloqueio(long codigoBloqueio) {
         this.codigoBloqueio = codigoBloqueio;
     }
 
@@ -69,10 +75,12 @@ public class Bloqueio {
         this.dataFim = dataFim;
     }
   
+    @JsonIgnore
     public List<Usuario> getUsuario() {
         return usuarios;
     }
 
+    @JsonIgnore
     public void setUsuario(List<Usuario> usuario) {
         this.usuarios = usuario;
     }

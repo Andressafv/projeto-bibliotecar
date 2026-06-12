@@ -27,11 +27,11 @@ public class Usuario {
     private String tipoUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "fk_bloqueio", referencedColumnName = "id")
+    @JoinColumn(name = "fk_bloqueio", referencedColumnName = "codigo_bloqueio")
     private Bloqueio bloqueio;
 
     @ManyToOne
-    @JoinColumn(name = "fk_regra_emprestimo", referencedColumnName = "id")
+    @JoinColumn(name = "fk_regra_emprestimo", referencedColumnName = "codigo_regra_emprestimo")
     private RegraEmprestimo regraEmprestimo;
 
     public Usuario() {
@@ -119,6 +119,14 @@ public class Usuario {
 
     public void setBloqueio(Bloqueio bloqueio) {
         this.bloqueio = bloqueio;
+    }
+
+    public RegraEmprestimo getRegraEmprestimo() {
+        return regraEmprestimo;
+    }
+
+    public void setRegraEmprestimo(RegraEmprestimo regraEmprestimo) {
+        this.regraEmprestimo = regraEmprestimo;
     }
 
 }

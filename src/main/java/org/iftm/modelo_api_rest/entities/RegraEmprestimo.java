@@ -13,6 +13,8 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tb_regra_emprestimo")
 
@@ -31,9 +33,13 @@ public class RegraEmprestimo {
     private int limiteEmprestimos;
     private boolean ativa;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "regraEmprestimo", fetch = FetchType.LAZY)
     private List<Usuario> usuarios = new ArrayList<>();
-    
+
+    public RegraEmprestimo() {
+    }
+
     public RegraEmprestimo(long codigoRegraEmprestimo, int prazoDias, double multaPorDia, double multaMax, int limiteEmprestimos, boolean ativa) {
         this.codigoRegraEmprestimo = codigoRegraEmprestimo;
         this.prazoDias = prazoDias;
@@ -67,7 +73,7 @@ public class RegraEmprestimo {
         return ativa;
     }
 
-    public void setCodigoRegraEmprestimo(int codigoRegraEmprestimo) {
+    public void setCodigoRegraEmprestimo(long codigoRegraEmprestimo) {
         this.codigoRegraEmprestimo = codigoRegraEmprestimo;
     }
 
@@ -90,10 +96,12 @@ public class RegraEmprestimo {
     public void setAtiva(boolean ativa) {
         this.ativa = ativa;
     }
+    @JsonIgnore
     public List<Usuario> getUsuario() {
         return usuarios;
     }
 
+    @JsonIgnore
     public void setUsuario(List<Usuario> usuario) {
         this.usuarios = usuario;
     }
